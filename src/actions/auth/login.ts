@@ -1,6 +1,6 @@
 "use server";
 
-import { signIn } from "@/auth";
+import { signIn } from "@/auth.config";
 
 export const login = async (email: string, password: string) => {
   try {

@@ -1,4 +1,4 @@
-import NextAuth, { type DefaultSession } from "next-auth";
+import NextAuth, { NextAuthConfig, type DefaultSession } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 declare module "next-auth" {
@@ -19,7 +19,7 @@ declare module "next-auth" {
   }
 }
 
-export const { handlers, signIn, signOut, auth } = NextAuth({
+export const authConfig: NextAuthConfig = {
   pages: {
     signIn: "/auth/login",
     signOut: "/auth/logout",
@@ -52,6 +52,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   callbacks: {
+    authorized({ auth, request: { nextUrl } }) {
+      const isLoggedIn = !!auth?.user;
+
+      const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
+      if (isOnDashboard) {
+        if (isLoggedIn) return true;
+        return false; // Redirect unauthenticated users to login page
+      } else if (isLoggedIn) {
+        return Response.redirect(new URL('/dashboard', nextUrl));
+      }
+      return true;
+    },
     session({ session, token, user }) {
       // `session.user.address` is now a valid property, and will be type-checked
       // in places like `useSession().data.user` or `auth().user`
@@ -62,5 +74,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         },
       };
     },
+    jwt({ token, user }) {
+      return { ...token, ...user };
+    },
   },
-});
+};
+
+export const { signIn, signOut, auth, handlers } = NextAuth(authConfig);
