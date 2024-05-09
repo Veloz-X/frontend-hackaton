@@ -19,10 +19,10 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import Image from "next/image";
 
-export default function AuthLogin() {
+export default function AuthRegister() {
   const { data: session, status } = useSession();
   const [errors, setErrors] = useState<string[]>([]);
-  const [email, setEmail] = useState<string>("joffre.veloz@gmail.com");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("Abc123");
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function AuthLogin() {
       <Card className="md:w-[500px] ">
         <CardHeader>
           <div className="mx-auto py-1 font-bold text-2xl">RedHack</div>
-          <CardTitle>Inicia sesión</CardTitle>
+          <CardTitle>Registrar</CardTitle>
           <CardDescription>
             Ingresar el correo electrónico y la contraseña
           </CardDescription>
@@ -91,7 +91,7 @@ export default function AuthLogin() {
             className="font-semibold my-auto"
           >
             <KeyRoundIcon className="w-4 h-4 mr-3 my-auto" />
-            <p className="my-auto">Inicia sesión</p>
+            <p className="my-auto">Registrar</p>
           </Button>
         </CardFooter>
       </Card>
