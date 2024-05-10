@@ -29,7 +29,7 @@ export default function DashboardPage() {
   const getProjectsData = async () => {
     try {
       const { status, projects = [] } = await getProjects();
-      setProjects(projects);
+      setProjects(projects??[]);
     } catch (error) {}
   };
   useEffect(() => {
