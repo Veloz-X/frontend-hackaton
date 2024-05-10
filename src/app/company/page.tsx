@@ -55,11 +55,9 @@ export default function DashboardPage() {
             {projects.map((project) => (
               <Card key={project.id}>
                 <CardHeader>
-                  <CardTitle>{project.name}</CardTitle>
+                  <CardTitle>{project.description}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="font-semibold">Descipcion:</div>
-                  <CardDescription>{project.description}</CardDescription>
                   <div className="font-semibold">Objetivo:</div>
                   <CardDescription>{project.objective}</CardDescription>
                   <div className="py-1 pt-2 ">
@@ -88,10 +86,6 @@ export default function DashboardPage() {
           </div>
         </div>
       )}
-
-      {/* <div>
-        <pre>{JSON.stringify(projects, null, 2)}</pre>
-      </div> */}
     </>
   );
 }

@@ -18,25 +18,51 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getProjects } from "@/actions";
+import { getProjectId, getProjects } from "@/actions";
 import { Badge } from "@/components/ui/badge";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
 
 interface Props {
   params: { id: string };
 }
 
 export default function ProjectIdPage({ params }: Props) {
-  const [projects, setProjects] = useState([]);
+  const [project, setProject] = useState([]);
 
-  const getProjectsData = async () => {
+  const getProjectData = async () => {
     try {
-      const { status, projects = [] } = await getProjects();
-      setProjects(projects);
+      const { status, project } = await getProjectId(params.id);
+      setProject(project);
     } catch (error) {}
   };
   useEffect(() => {
-    getProjectsData();
+    getProjectData();
   }, []);
 
-  return <>{params.id}</>;
+  return (
+    <>
+      <div className="p-3">
+      <ResizablePanelGroup
+        direction="horizontal"
+        className="max-h-full max-w-full rounded-lg border"
+      >
+        <ResizablePanel defaultSize={70}>
+          <div className="flex h-full items-center justify-center p-6">
+            <span className="font-semibold">Sidebar</span>
+          </div>
+        </ResizablePanel>
+        <ResizableHandle withHandle />
+        <ResizablePanel defaultSize={30}>
+          <div className="flex h-full items-center justify-center p-6">
+            <span className="font-semibold">Content</span>
+          </div>
+        </ResizablePanel>
+      </ResizablePanelGroup>
+      </div>
+    </>
+  );
 }

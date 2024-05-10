@@ -1,0 +1,28 @@
+"use server";
+
+import { auth } from "@/auth.config";
+
+export const getProjectId = async (id:string) => {
+  const session = await auth();
+
+  if (!session?.user) {
+    return {
+      status: false,
+      message: "Debe de estar autenticado",
+    };
+  }
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/projects/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${session?.user?.token}`,
+    },
+  });
+  const project = await res.json();
+
+  return {
+    status: true,
+    project: project,
+  };
+};
