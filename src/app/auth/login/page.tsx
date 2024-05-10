@@ -17,12 +17,11 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
-import Image from "next/image";
 
 export default function AuthLogin() {
   const { data: session, status } = useSession();
   const [errors, setErrors] = useState<string[]>([]);
-  const [email, setEmail] = useState<string>("joffre.veloz@gmail.com");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("Abc123");
 
   useEffect(() => {
@@ -32,17 +31,31 @@ export default function AuthLogin() {
   const handleSubmit = async () => {
     setErrors([]);
     const resLogin = await login(email, password);
-    console.log(resLogin);
     if (resLogin.ok) {
-      window.location.replace("/dashboard");
+      let ruta = "";
+      if (session?.user.roles[0] === "user") {
+        ruta = "/user";
+      }
+      if (session?.user.roles[0] === "company") {
+        ruta = "/company";
+      }
+      window.location.replace(ruta);
       toast.success("Inicia sesión", { description: "Cuenta verificada." });
       return;
     }
     toast.error("Error", { description: resLogin.message });
   };
   const verifyUser = async (status: string) => {
+    let ruta = "";
+    if (session?.user.roles[0] === "user") {
+      ruta = "/user";
+    }
+    if (session?.user.roles[0] === "company") {
+      ruta = "/company";
+    }
+
     if (status === "authenticated") {
-      window.location.replace("/dashboard");
+      window.location.replace(ruta);
     }
   };
 
@@ -69,7 +82,7 @@ export default function AuthLogin() {
             <Input
               id="login-email"
               type="text"
-              placeholder="admin@gmail.com"
+              placeholder="xxxxxxx@gmail.com"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
             />

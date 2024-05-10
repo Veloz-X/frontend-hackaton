@@ -5,10 +5,13 @@ import {
   CalendarDaysIcon,
   ChevronLeft,
   ChevronRight,
+  CircleUserIcon,
   EyeIcon,
   LogOut,
+  MapPinIcon,
+  PhoneCallIcon,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import {
   Card,
@@ -25,13 +28,15 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import { Project } from "@/components/company/interface/project";
+import Loading from "../loading";
 
 interface Props {
   params: { id: string };
 }
 
 export default function ProjectIdPage({ params }: Props) {
-  const [project, setProject] = useState([]);
+  const [project, setProject] = useState<Project>();
 
   const getProjectData = async () => {
     try {
@@ -45,24 +50,59 @@ export default function ProjectIdPage({ params }: Props) {
 
   return (
     <>
-      <div className="p-3">
-      <ResizablePanelGroup
-        direction="horizontal"
-        className="max-h-full max-w-full rounded-lg border"
-      >
-        <ResizablePanel defaultSize={70}>
-          <div className="flex h-full items-center justify-center p-6">
-            <span className="font-semibold">Sidebar</span>
-          </div>
-        </ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel defaultSize={30}>
-          <div className="flex h-full items-center justify-center p-6">
-            <span className="font-semibold">Content</span>
-          </div>
-        </ResizablePanel>
-      </ResizablePanelGroup>
-      </div>
+      <Suspense fallback={<Loading />}></Suspense>
+      {project && (
+        <div className="p-3 h-screen flex">
+          <ResizablePanelGroup
+            direction="horizontal"
+            className="max-w-full rounded-lg border"
+          >
+            <ResizablePanel defaultSize={70}>
+              <div className="grid grid-cols-3 p-3">
+                {project.usersAdmitted.map((user) => (
+                  <Card key={user.id}>
+                    <CardHeader>
+                      <CardTitle>{user.fullName}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="grid-cols-2 gap-2 grid">
+                        <Badge className="flex ">{user.email}</Badge>
+                        <Badge className="flex ">
+                          <PhoneCallIcon className="mr-2 h-4 w-4 my-auto" />
+                          {user.phone}
+                        </Badge>
+                        <Badge className="flex ">
+                          Experiencia: {user.data.yearsofexp}
+                        </Badge>
+                        <Badge className="flex ">
+                          <MapPinIcon className="mr-2 h-4 w-4 my-auto" />
+                          {user.data.location}
+                        </Badge>
+                      </CardDescription>
+                      <CardDescription className="pt-3">
+                        {user.jobMatcherResponses.profile_summary}
+                      </CardDescription>
+                    </CardContent>
+                    <CardFooter>
+                      <Badge className="flex" variant={"default"}>
+                        <CircleUserIcon className="mr-2 h-4 w-4 my-auto text-lg font-semibold" />
+                        {user.jobMatcherResponses.job_description_match} de
+                        compatibilidad
+                      </Badge>
+                    </CardFooter>
+                  </Card>
+                ))}
+              </div>
+            </ResizablePanel>
+            <ResizableHandle withHandle />
+            <ResizablePanel defaultSize={30}>
+              <div className="p-2">
+                <Card>ss</Card>
+              </div>
+            </ResizablePanel>
+          </ResizablePanelGroup>
+        </div>
+      )}
     </>
   );
 }

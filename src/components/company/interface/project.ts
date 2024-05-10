@@ -2,19 +2,18 @@ export interface Project {
     id:            string;
     startDate:     string;
     finishDate:    string;
-    name:          string;
     description:   string;
     scopes:        string;
     objective:     string;
     budget:        string;
     requirements:  string;
     team_profile:  string;
-    // data:          ProjectData;
+    data:          ProjectData;
     status:        boolean;
     createDate:    string;
     updateDate:    string;
-    userCreate:    string;
-    // usersAdmitted: User[];
+    userCreate:    User;
+    usersAdmitted: User[];
 }
 
 export interface ProjectData {
@@ -22,15 +21,16 @@ export interface ProjectData {
 }
 
 export interface User {
-    id:         string;
-    email:      string;
-    fullName:   string;
-    phone:      null | string;
-    data:       UserCreateData;
-    isActive:   boolean;
-    roles:      string[];
-    createDate: Date;
-    updateDate: Date;
+    id:                  string;
+    email:               string;
+    fullName:            string;
+    jobMatcherResponses: JobMatcherResponses;
+    phone:               string;
+    data:                UserCreateData;
+    isActive:            boolean;
+    roles:               string[];
+    createDate:          Date;
+    updateDate:          Date;
 }
 
 export interface UserCreateData {
@@ -38,13 +38,13 @@ export interface UserCreateData {
     language:       string[];
     timezone:       string;
     hoursavailable: string;
-    skills:         Skill[];
+    skills:         string[];
     location:       string;
     cv:             string;
 }
 
-export enum Skill {
-    AngularJS = "Angular.js",
-    NodeJS = "Node.js",
-    ReactJS = "React.js",
+export interface JobMatcherResponses {
+    job_description_match: string;
+    matching_keywords:     string[];
+    profile_summary:       string;
 }

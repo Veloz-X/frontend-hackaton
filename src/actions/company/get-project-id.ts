@@ -4,7 +4,6 @@ import { auth } from "@/auth.config";
 
 export const getProjectId = async (id:string) => {
   const session = await auth();
-
   if (!session?.user) {
     return {
       status: false,

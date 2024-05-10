@@ -2,13 +2,11 @@ import NextAuth, { NextAuthConfig, type DefaultSession } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 declare module "next-auth" {
-  /**
-   * Returned by `auth`, `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
-   */
   interface Session {
     user: {
       address: string;
       token: string;
+      roles: string[];
     } & DefaultSession["user"];
   }
 }
@@ -37,9 +35,7 @@ export const authConfig: NextAuthConfig = {
             headers: { "Content-Type": "application/json" },
           }
         );
-        console.log(res);
         const user = await res.json();
-        console.log(user);
         if (user.error) throw user;
         return user;
       },
@@ -48,19 +44,25 @@ export const authConfig: NextAuthConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-
-      const isOnDashboard = nextUrl.pathname.startsWith('/company');
+      let ruta = "";
+      console.log("authorized", auth?.user.roles[0]);
+      if (auth?.user.roles[0] == "user") {
+        const ruta = "/user";
+      }
+      if (auth?.user.roles[0] == "company") {
+        const ruta = "/company";
+      }
+      const isOnDashboard = nextUrl.pathname.startsWith(ruta);
       if (isOnDashboard) {
         if (isLoggedIn) return true;
-        return false; // Redirect unauthenticated users to login page
+        return false;
       } else if (isLoggedIn) {
-        return Response.redirect(new URL('/company', nextUrl));
+        return Response.redirect(new URL(ruta, nextUrl));
       }
       return true;
     },
     session({ session, token, user }) {
-      // `session.user.address` is now a valid property, and will be type-checked
-      // in places like `useSession().data.user` or `auth().user`
+      session.user.roles = token.roles;
       return {
         ...session,
         user: {

@@ -32,7 +32,6 @@ export default function AuthRegister() {
   const handleSubmit = async () => {
     setErrors([]);
     const resLogin = await login(email, password);
-    console.log(resLogin);
     if (resLogin.ok) {
       window.location.replace("/dashboard");
       toast.success("Inicia sesión", { description: "Cuenta verificada." });
