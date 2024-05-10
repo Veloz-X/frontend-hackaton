@@ -16,6 +16,7 @@ export const authConfig: NextAuthConfig = {
     signIn: "/auth/login",
     signOut: "/auth/logout",
     error: "/auth/error",
+    newUser: "/auth/register",
   },
   providers: [
     Credentials({
@@ -43,6 +44,9 @@ export const authConfig: NextAuthConfig = {
   ],
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
+      if(nextUrl.pathname === "/auth/register"){
+        return true;
+      }
       const isLoggedIn = !!auth?.user;
       let ruta = "";
       console.log("authorized", auth?.user.roles[0]);
@@ -62,11 +66,10 @@ export const authConfig: NextAuthConfig = {
       return true;
     },
     session({ session, token, user }) {
-      session.user.roles = token.roles;
       return {
         ...session,
         user: {
-          ...session.user,
+          ...token,
         },
       };
     },

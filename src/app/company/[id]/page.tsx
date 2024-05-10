@@ -2,14 +2,17 @@
 
 import { Button } from "@/components/ui/button";
 import {
+  BanknoteIcon,
   CalendarDaysIcon,
   ChevronLeft,
   ChevronRight,
   CircleUserIcon,
   EyeIcon,
+  Link,
   LogOut,
   MapPinIcon,
   PhoneCallIcon,
+  Settings2Icon,
 } from "lucide-react";
 import { useState, useEffect, Suspense } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -30,12 +33,24 @@ import {
 } from "@/components/ui/resizable";
 import { Project } from "@/components/company/interface/project";
 import Loading from "../loading";
+import { toast } from "sonner";
 
 interface Props {
   params: { id: string };
 }
 
 export default function ProjectIdPage({ params }: Props) {
+  const [copied, setCopied] = useState(false);
+  const copyToClipboard = () => {
+    toast("Link copiado al portapapeles");
+    navigator.clipboard.writeText(
+      "http://localhost:3000/user/admissions/" + params.id
+    );
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+  };
   const [project, setProject] = useState<Project>();
 
   const getProjectData = async () => {
@@ -79,7 +94,7 @@ export default function ProjectIdPage({ params }: Props) {
                           {user.data.location}
                         </Badge>
                       </CardDescription>
-                      <CardDescription className="pt-3">
+                      <CardDescription className="pt-3 text-justify">
                         {user.jobMatcherResponses.profile_summary}
                       </CardDescription>
                     </CardContent>
@@ -97,7 +112,48 @@ export default function ProjectIdPage({ params }: Props) {
             <ResizableHandle withHandle />
             <ResizablePanel defaultSize={30}>
               <div className="p-2">
-                <Card>ss</Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>{project.description}</CardTitle>
+                    <div className="flex space-x-1 py-2">
+                      <Badge className="flex">
+                        <CalendarDaysIcon className="mr-2 h-4 w-4 my-auto" />
+                        {project.startDate} - {project.finishDate}
+                      </Badge>
+                      <Badge className="flex">
+                        <EyeIcon className="mr-2 h-4 w-4 my-auto" />
+                        {project.status ? "Activo" : "Inactivo"}
+                      </Badge>
+                      <Badge className="flex">
+                        <BanknoteIcon className="mr-2 h-4 w-4 my-auto" />
+                        {project.budget}
+                      </Badge>
+                    </div>
+                    <p className="font-semibold text-sm">Descripcion:</p>
+                    <CardDescription>{project.description}</CardDescription>
+                    <p className="font-semibold text-sm">Objetivo:</p>
+                    <CardDescription>{project.objective}</CardDescription>
+                    <p className="font-semibold text-sm">Requerimiento:</p>
+                    <CardDescription>{project.requirements}</CardDescription>
+                    <p className="font-semibold text-sm">Perfil Profesional:</p>
+                    <CardDescription>{project.team_profile}</CardDescription>
+                  </CardHeader>
+                  <CardFooter className="space-x-2">
+                    <Button
+                      className="font-semibold"
+                      onClick={() => {
+                        console.log("Editar");
+                      }}
+                    >
+                      <Settings2Icon className="mr-2 h-4 w-4 my-auto" />
+                      Editar
+                    </Button>
+                    <Button className="font-semibold" onClick={copyToClipboard}>
+                      <Link className="mr-2 h-4 w-4 my-auto" />
+                      Link de invitacion
+                    </Button>
+                  </CardFooter>
+                </Card>
               </div>
             </ResizablePanel>
           </ResizablePanelGroup>

@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { KeyRoundIcon } from "lucide-react";
+import { KeyRoundIcon, User } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -22,7 +22,7 @@ export default function AuthLogin() {
   const { data: session, status } = useSession();
   const [errors, setErrors] = useState<string[]>([]);
   const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("Abc123");
+  const [password, setPassword] = useState<string>("");
 
   useEffect(() => {
     verifyUser(status);
@@ -82,7 +82,7 @@ export default function AuthLogin() {
             <Input
               id="login-email"
               type="text"
-              placeholder="xxxxxxx@gmail.com"
+              placeholder="usuario@gmail.com"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
             />
@@ -93,11 +93,14 @@ export default function AuthLogin() {
               id="login-password"
               type="password"
               value={password}
+              placeholder="********"
               onChange={(event) => setPassword(event.target.value)}
             />
           </div>
         </CardContent>
         <CardFooter>
+          
+          <div className="space-x-4">
           <Button
             variant={"outline"}
             onClick={handleSubmit}
@@ -106,6 +109,17 @@ export default function AuthLogin() {
             <KeyRoundIcon className="w-4 h-4 mr-3 my-auto" />
             <p className="my-auto">Inicia sesión</p>
           </Button>
+            <Button
+              variant={"outline"}
+              onClick={() => {
+                window.location.replace("/auth/register");
+              }}
+              className="font-semibold my-auto"
+            >
+              <User className="w-4 h-4 mr-3 my-auto" />
+              <p className="my-auto">No tengo cuenta</p>
+            </Button>
+          </div>
         </CardFooter>
       </Card>
     </div>

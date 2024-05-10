@@ -41,49 +41,37 @@ export default function DashboardPage() {
     <>
       <Suspense fallback={<Loading />}></Suspense>
       {projects.length > 0 && (
-        <div>
-          <div className=" mx-auto flex justify-end  pt-4 px-4">
-            <Button
-              onClick={() => signOut()}
-              className=" justify-start font-normal "
-            >
-              <LogOut className="mr-3 h-6 w-6 my-auto" />
-              <p className="font-semibold text-base my-auto">Cerrar Sesión</p>
-            </Button>
-          </div>
-          <div className="grid grid-cols-3 p-4 gap-4">
-            {projects.map((project) => (
-              <Card key={project.id}>
-                <CardHeader>
-                  <CardTitle>{project.description}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="font-semibold">Objetivo:</div>
-                  <CardDescription>{project.objective}</CardDescription>
-                  <div className="py-1 pt-2 ">
-                    <Badge>Presupuesto: {project.budget} </Badge>
-                  </div>
-                  <div className="py-1">
-                    <Badge variant={"outline"}>
-                      Proyecto:{" "}
-                      {project?.status === true ? "Activo" : "Inactivo"}{" "}
-                    </Badge>
-                  </div>
-                  <div className="pt-2">
-                    <Link href={`/company/${project.id}`} key={project.id}>
-                      <Button
-                        className="font-semibold justify-end"
-                        variant={"secondary"}
-                      >
-                        <EyeIcon className="mr-2 h-6 w-6 my-auto" />
-                        Ver Proyecto
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+        <div className="grid grid-cols-3 p-4 gap-4">
+          {projects.map((project) => (
+            <Card key={project.id}>
+              <CardHeader>
+                <CardTitle>{project.description}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="font-semibold">Objetivo:</div>
+                <CardDescription>{project.objective}</CardDescription>
+                <div className="py-1 pt-2 ">
+                  <Badge>Presupuesto: {project.budget} </Badge>
+                </div>
+                <div className="py-1">
+                  <Badge variant={"outline"}>
+                    Proyecto: {project?.status === true ? "Activo" : "Inactivo"}{" "}
+                  </Badge>
+                </div>
+                <div className="pt-2">
+                  <Link href={`/company/${project.id}`} key={project.id}>
+                    <Button
+                      className="font-semibold justify-end"
+                      variant={"secondary"}
+                    >
+                      <EyeIcon className="mr-2 h-6 w-6 my-auto" />
+                      Ver Proyecto
+                    </Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       )}
     </>
