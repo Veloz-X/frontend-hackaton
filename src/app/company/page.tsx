@@ -29,7 +29,7 @@ export default function DashboardPage() {
   const getProjectsData = async () => {
     try {
       const { status, projects = [] } = await getProjects();
-      setProjects(projects??[]);
+      setProjects(projects);
     } catch (error) {}
   };
   useEffect(() => {
@@ -53,7 +53,6 @@ export default function DashboardPage() {
             <CardHeader>
               <CardTitle>{project.name}</CardTitle>
             </CardHeader>
-
             <CardContent>
               <div className="font-semibold">Descipcion:</div>
               <CardDescription>{project.description}</CardDescription>
@@ -69,13 +68,13 @@ export default function DashboardPage() {
               </div>
               <div className="pt-2">
                 <Link href={`/company/${project.id}`} key={project.id}>
-                <Button
-                  className="font-semibold justify-end"
-                  variant={"secondary"}
-                >
-                  <EyeIcon className="mr-2 h-6 w-6 my-auto" />
-                  Ver Proyecto
-                </Button>
+                  <Button
+                    className="font-semibold justify-end"
+                    variant={"secondary"}
+                  >
+                    <EyeIcon className="mr-2 h-6 w-6 my-auto" />
+                    Ver Proyecto
+                  </Button>
                 </Link>
               </div>
             </CardContent>
