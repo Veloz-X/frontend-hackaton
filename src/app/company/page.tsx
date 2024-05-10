@@ -21,9 +21,10 @@ import {
 import { getProjects } from "@/actions";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import { Project } from "@/components/company/interface/project";
 
 export default function DashboardPage() {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<Project[]>([]);
 
   const getProjectsData = async () => {
     try {
