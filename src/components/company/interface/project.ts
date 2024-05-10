@@ -1,7 +1,7 @@
 export interface Project {
     id:            string;
-    startDate:     Date;
-    finishDate:    Date;
+    startDate:     string;
+    finishDate:    string;
     name:          string;
     description:   string;
     scopes:        string;
@@ -9,12 +9,12 @@ export interface Project {
     budget:        string;
     requirements:  string;
     team_profile:  string;
-    data:          ProjectData;
+    // data:          ProjectData;
     status:        boolean;
-    createDate:    Date;
-    updateDate:    Date;
-    userCreate:    User;
-    usersAdmitted: User[];
+    createDate:    string;
+    updateDate:    string;
+    userCreate:    string;
+    // usersAdmitted: User[];
 }
 
 export interface ProjectData {

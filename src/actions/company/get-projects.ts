@@ -1,7 +1,6 @@
 "use server";
 
 import { auth } from "@/auth.config";
-import { Project } from "@/components/company/interface/project";
 
 export const getProjects = async () => {
   const session = await auth();
@@ -20,7 +19,7 @@ export const getProjects = async () => {
       Authorization: `Bearer ${session?.user?.token}`,
     },
   });
-  const projects:Project[] = await res.json();
+  const projects = await res.json();
 
   return {
     status: true,
