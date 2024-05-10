@@ -28,6 +28,7 @@ export default function UserPage() {
   const [userData, setUserData] = useState();
   const getUserData = async () => {
     const { ok, user } = await getDataUser();
+    // FIX: setUserData(user); 
     // setUserData(user);
   };
   useEffect(() => {
