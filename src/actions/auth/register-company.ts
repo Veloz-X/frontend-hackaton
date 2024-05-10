@@ -5,7 +5,10 @@ export const registerCompanyApi = async (
   fullName: string,
   roles: any,
   password: string,
-  data: any
+  phone: string,
+  hoursavailable: string,
+  location: string,
+  bio: string
 ) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/register`,
@@ -19,7 +22,10 @@ export const registerCompanyApi = async (
         fullName: fullName,
         roles: roles,
         password: password,
-        data: data,
+        phone: phone,
+        hoursavailable: hoursavailable,
+        location: location,
+        bio: bio,
       }),
     }
   );

@@ -31,15 +31,14 @@ export default function AuthRegister() {
     password: "",
   });
   const [registerUser, setRegisterUser] = useState({
+    roles: ["user"],
     email: "",
     fullName: "",
-    roles: ["user"],
-    data: {
-      yearsofexp:"",
-      hoursavailable:"",
-      location:""
-    },
     password: "",
+    phone: "",
+    hoursavailable: "",
+    location: "",
+    bio: "",
   });
 
   const handleSubmit = async () => {
@@ -48,7 +47,27 @@ export default function AuthRegister() {
       registerCompany.fullName,
       registerCompany.roles,
       registerCompany.password,
-      {}
+      "0999999999",
+      "",
+      "",
+      ""
+    );
+    toast("Registrar", {
+      description: resgisterComapyResponse.message,
+      duration: 5000,
+    });
+  };
+
+  const handleSubmitUser = async () => {
+    const resgisterComapyResponse = await registerCompanyApi(
+      registerCompany.email,
+      registerCompany.fullName,
+      registerCompany.roles,
+      registerCompany.password,
+      "0999999999",
+      "",
+      "",
+      ""
     );
     toast("Registrar", {
       description: resgisterComapyResponse.message,
@@ -62,6 +81,7 @@ export default function AuthRegister() {
       [field]: value,
     }));
   };
+
   const handleRegisterUser = (field: any, value: any) => {
     setRegisterUser((prevData) => ({
       ...prevData,
@@ -149,15 +169,25 @@ export default function AuthRegister() {
                 <CardContent className="space-y-2">
                   <div className="space-y-1">
                     <Label htmlFor="fullNameUser">Nombre Completo</Label>
-                    <Input id="fullNameuser" type="text" placeholder="" onChange={(e) => {
+                    <Input
+                      id="fullNameuser"
+                      type="text"
+                      placeholder=""
+                      onChange={(e) => {
                         handleRegisterUser("fullName", e.target.value);
-                      }} />
+                      }}
+                    />
                   </div>
                   <div className="space-y-1">
                     <Label htmlFor="emailUser">Correo</Label>
-                    <Input id="emailUser" type="email" placeholder="" onChange={(e) => {
+                    <Input
+                      id="emailUser"
+                      type="email"
+                      placeholder=""
+                      onChange={(e) => {
                         handleRegisterUser("email", e.target.value);
-                      }} />
+                      }}
+                    />
                   </div>
                   <div className="py-1 flex space-x-2">
                     <div>
@@ -166,6 +196,9 @@ export default function AuthRegister() {
                         id="phoneUser"
                         type="text"
                         placeholder="0999999999"
+                        onChange={(e) => {
+                          handleRegisterUser("phone", e.target.value);
+                        }}
                       />
                     </div>
                     <div>
@@ -174,6 +207,9 @@ export default function AuthRegister() {
                         id="horaUser"
                         type="text"
                         placeholder="7:00AM - 13:00PM"
+                        onChange={(e) => {
+                          handleRegisterUser("hoursavailable", e.target.value);
+                        }}
                       />
                     </div>
                   </div>
@@ -183,6 +219,9 @@ export default function AuthRegister() {
                       id="locationUser"
                       type="text"
                       placeholder="Guayaquil, Samborondon"
+                      onChange={(e) => {
+                        handleRegisterUser("location", e.target.value);
+                      }}
                     />
                   </div>
                   <div className="space-y-1">
@@ -192,11 +231,14 @@ export default function AuthRegister() {
                     <Textarea
                       id="bioUser"
                       placeholder="Tengo 5 años de experiencia en desarrollo web..."
+                      onChange={(e) => {
+                        handleRegisterUser("bio", e.target.value);
+                      }}
                     />
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button className="font-semibold">
+                  <Button className="font-semibold" onClick={handleSubmitUser}>
                     <KeyRoundIcon className="w-4 h-4 mr-2 my-auto" />
                     Registrar
                   </Button>
