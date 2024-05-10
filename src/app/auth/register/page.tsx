@@ -34,7 +34,11 @@ export default function AuthRegister() {
     email: "",
     fullName: "",
     roles: ["user"],
-    data: {},
+    data: {
+      yearsofexp:"",
+      hoursavailable:"",
+      location:""
+    },
     password: "",
   });
 
