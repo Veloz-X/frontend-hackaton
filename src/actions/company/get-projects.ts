@@ -20,7 +20,6 @@ export const getProjects = async () => {
     },
   });
   const projects = await res.json();
-  console.log(projects);
 
   return {
     status: true,
