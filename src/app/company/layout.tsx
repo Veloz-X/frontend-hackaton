@@ -77,7 +77,7 @@ export default function AdminLayout({
           <a href="/company">
             <div className="font-semibold my-auto px-3 text-xl flex">
               <UserSearchIcon className="w-8 h-8 mr-2 my-auto" />
-              <p className="my-auto">TalentLink - Administrador</p>
+              <p className="my-auto">TalentLink</p>
             </div>
           </a>
           <div className="flex space-x-2">
