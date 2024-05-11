@@ -92,7 +92,6 @@ export default function AdminLayout({
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[500px]">
-                {/* <pre>{JSON.stringify(createProjectData)}</pre> */}
                 <DialogHeader>
                   <DialogTitle>Cear Proyecto</DialogTitle>
                 </DialogHeader>
@@ -170,7 +169,6 @@ export default function AdminLayout({
                     />
                   </div>
                 </div>
-
                 <DialogFooter>
                   <Button onClick={handleSubmitUser}>
                     <FilePlusIcon className="mr-2 h-6 w-6 my-auto" />
