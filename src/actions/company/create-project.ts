@@ -39,8 +39,8 @@ export const createProject = async (
 
   console.log(response);
 
-//   return {
-//     status: true,
-//     response: response,
-//   };
+  return {
+    status: true,
+    response: response.message,
+  };
 };

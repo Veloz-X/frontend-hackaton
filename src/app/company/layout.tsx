@@ -43,7 +43,7 @@ export default function AdminLayout({
   });
 
   const handleSubmitUser = async () => {
-    const resgisterComapyUser = await createProject(
+    const message = await createProject(
       createProjectData.startDate,
       createProjectData.finishDate,
       createProjectData.description,
@@ -52,10 +52,10 @@ export default function AdminLayout({
       createProjectData.requirements,
       createProjectData.team_profile
     );
-    // toast("Registrar", {
-    //   description: resgisterComapyUser.message,
-    //   duration: 5000,
-    // });
+    toast("Crear Project", {
+      description: message.message,
+      duration: 5000,
+    });
   };
 
   const handleCreateProject = (field: any, value: any) => {
@@ -70,10 +70,10 @@ export default function AdminLayout({
       <body className={inter.className}>
         <div className=" mx-auto flex justify-between  pt-4 px-4">
           <a href="/company">
-          <div className="font-semibold my-auto px-3 text-xl flex">
-            <UserSearchIcon className="w-8 h-8 mr-2 my-auto" />
-            <p className="my-auto">TalentLink - Administrador</p>
-          </div>
+            <div className="font-semibold my-auto px-3 text-xl flex">
+              <UserSearchIcon className="w-8 h-8 mr-2 my-auto" />
+              <p className="my-auto">TalentLink - Administrador</p>
+            </div>
           </a>
           <div className="flex space-x-2">
             <ModeToggle />
@@ -116,15 +116,25 @@ export default function AdminLayout({
                   <div className="flex space-x-2">
                     <div className="space-y-1">
                       <Label htmlFor="data">Fecha Inicio:</Label>
-                      <Input id="data" type="text" placeholder="10/05/2024" onChange={(e) => {
-                        handleCreateProject("startDate", e.target.value);
-                      }}/>
+                      <Input
+                        id="data"
+                        type="text"
+                        placeholder="10/05/2024"
+                        onChange={(e) => {
+                          handleCreateProject("startDate", e.target.value);
+                        }}
+                      />
                     </div>
                     <div className="space-y-1">
                       <Label htmlFor="data">Fecha Finalizacion:</Label>
-                      <Input id="data" type="text" placeholder="10/12/2024" onChange={(e) => {
-                        handleCreateProject("finishDate", e.target.value);
-                      }}/>
+                      <Input
+                        id="data"
+                        type="text"
+                        placeholder="10/12/2024"
+                        onChange={(e) => {
+                          handleCreateProject("finishDate", e.target.value);
+                        }}
+                      />
                     </div>
                   </div>
                   <div className="space-y-1">
@@ -155,7 +165,6 @@ export default function AdminLayout({
                       onChange={(e) => {
                         handleCreateProject("team_profile", e.target.value);
                       }}
-                      
                     />
                   </div>
                 </div>
