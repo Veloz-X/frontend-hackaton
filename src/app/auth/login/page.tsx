@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { KeyRoundIcon, User } from "lucide-react";
+import { KeyRoundIcon, User, UserSearchIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -70,7 +70,10 @@ export default function AuthLogin() {
     >
       <Card className="md:w-[500px] ">
         <CardHeader>
-          <div className="mx-auto py-1 font-bold text-2xl">RedHack</div>
+        <div className="mx-auto py-1 font-bold text-2xl flex">
+            <UserSearchIcon className="w-8 h-8 mr-2 my-auto" />
+            <p className="my-auto">TalentLink</p>
+            </div>
           <CardTitle>Inicia sesión</CardTitle>
           <CardDescription>
             Ingresar el correo electrónico y la contraseña
