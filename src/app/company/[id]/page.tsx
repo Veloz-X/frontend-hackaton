@@ -112,7 +112,7 @@ export default function ProjectIdPage({ params }: Props) {
             </ResizablePanel>
             <ResizableHandle withHandle />
             <ResizablePanel defaultSize={35}>
-              <div className="p-2">
+              <div className="p-2 overflow-y-auto">
                 <Card>
                   <CardHeader>
                     <CardTitle className="text-base">
@@ -133,11 +133,11 @@ export default function ProjectIdPage({ params }: Props) {
                       </Badge>
                     </div>
                     <p className="font-semibold text-sm">Objetivo:</p>
-                    <CardDescription>{project.objective}</CardDescription>
+                    <CardDescription className="overflow-y-auto">{project.objective}</CardDescription>
                     <p className="font-semibold text-sm">Requerimiento:</p>
-                    <CardDescription>{project.requirements}</CardDescription>
+                    <CardDescription className="overflow-y-auto">{project.requirements}</CardDescription>
                     <p className="font-semibold text-sm">Perfil Profesional:</p>
-                    <CardDescription>{project.team_profile}</CardDescription>
+                    <CardDescription className="overflow-y-auto">{project.team_profile}</CardDescription>
                   </CardHeader>
                   <CardFooter className="space-x-2">
                     <Button
