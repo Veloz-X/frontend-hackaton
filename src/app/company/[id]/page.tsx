@@ -148,7 +148,7 @@ export default function ProjectIdPage({ params }: Props) {
                     </CardDescription>
                   </CardHeader>
                   <CardFooter className="space-x-2">
-                    <Button
+                    {/* <Button
                       className="font-semibold"
                       onClick={() => {
                         console.log("Editar");
@@ -156,7 +156,7 @@ export default function ProjectIdPage({ params }: Props) {
                     >
                       <Settings2Icon className="mr-2 h-4 w-4 my-auto" />
                       Editar
-                    </Button>
+                    </Button> */}
                     <Button className="font-semibold" onClick={copyToClipboard}>
                       <Link className="mr-2 h-4 w-4 my-auto" />
                       Link de invitacion
