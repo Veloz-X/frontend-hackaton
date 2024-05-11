@@ -50,13 +50,13 @@ export default function AdminLayout({
 
   const handleSubmitUser = async () => {
     if (
-      createProjectData.startDate.length > 10 &&
-      createProjectData.finishDate.length > 10 &&
-      createProjectData.description.length > 10 &&
-      createProjectData.budget.length > 10 &&
-      createProjectData.objective.length > 10 &&
-      createProjectData.requirements.length > 10 &&
-      createProjectData.team_profile.length > 10
+      createProjectData.startDate.length > 5 &&
+      createProjectData.finishDate.length > 5 &&
+      createProjectData.description.length > 5 &&
+      createProjectData.budget.length > 5 &&
+      createProjectData.objective.length > 5 &&
+      createProjectData.requirements.length > 5 &&
+      createProjectData.team_profile.length > 5
     ) {
       toast.success("Proyecto creado con exito");
     } else {
