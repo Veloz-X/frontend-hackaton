@@ -44,7 +44,7 @@ export default function ProjectIdPage({ params }: Props) {
   const copyToClipboard = () => {
     toast("Link copiado al portapapeles");
     navigator.clipboard.writeText(
-      "http://localhost:3000/user/admissions/" + params.id
+      "https://frontend-hackaton.vercel.app/user/admissions/" + params.id
     );
     setCopied(true);
     setTimeout(() => {
