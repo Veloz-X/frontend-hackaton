@@ -32,6 +32,7 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { Project } from "@/components/company/interface/project";
+import { toast } from "sonner";
 
 interface Props {
   params: { id: string };
@@ -42,9 +43,15 @@ export default function AdmissionsIdPage({ params }: Props) {
 
   const aplicarClick = async () => {
     try {
-      const { status, mesage } = await admissionsId(params.id);
-      
-    } catch (error) {}
+      const { status, message } = await admissionsId(params.id);
+      if (status) {
+        toast.success("Aplicacion enviada");
+      } else {
+        toast.error(message);
+      }
+    } catch (error) {
+      toast.error("Error al aplicar al proyecto");
+    }
   };
 
   const getProjectData = async () => {
@@ -78,8 +85,6 @@ export default function AdmissionsIdPage({ params }: Props) {
                   {project.budget}
                 </Badge>
               </div>
-              <p className="font-semibold text-sm">Descripcion:</p>
-              <CardDescription>{project.description}</CardDescription>
               <p className="font-semibold text-sm">Objetivo:</p>
               <CardDescription>{project.objective}</CardDescription>
               <p className="font-semibold text-sm">Requerimiento:</p>

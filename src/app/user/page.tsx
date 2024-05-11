@@ -23,13 +23,13 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { Project } from "@/components/company/interface/project";
 import Loading from "./loading";
+import { User } from "next-auth";
 
 export default function UserPage() {
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState<User>();
   const getUserData = async () => {
     const { ok, user } = await getDataUser();
-    // FIX: setUserData(user); 
-    // setUserData(user);
+    setUserData(user);
   };
   useEffect(() => {
     getUserData();
@@ -40,7 +40,7 @@ export default function UserPage() {
       <Suspense fallback={<Loading />}></Suspense>
       <Card className="m-3">
         <CardHeader>
-          <CardTitle>Perfiil</CardTitle>
+          <CardTitle>Usuario</CardTitle>
         </CardHeader>
         <CardContent>
         {JSON.stringify(userData)}

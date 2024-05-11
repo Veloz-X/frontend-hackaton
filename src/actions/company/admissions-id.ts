@@ -21,11 +21,10 @@ export const admissionsId = async (id: string) => {
       },
     }
   );
-  const mesage = await res.json();
-  console.log(mesage);
+  const responseApli = await res.json();
 
   return {
-    status: true,
-    mesage: mesage,
+    status: responseApli.status,
+    message: responseApli.message,
   };
 };

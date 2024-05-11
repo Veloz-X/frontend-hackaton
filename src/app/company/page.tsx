@@ -42,7 +42,7 @@ export default function DashboardPage() {
       {projects.length > 0 && (
         <div className="grid grid-cols-3 p-4 gap-4">
           {projects.map((project) => (
-            <Card key={project.id}>
+            <Card key={project.id} className="mb-auto">
               <CardContent>
               <CardTitle className="text-base uppercase pt-4 pb-2">
                   <ScrollArea className="line-clamp-5 ">{project.description}</ScrollArea>
