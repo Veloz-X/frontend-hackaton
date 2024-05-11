@@ -46,11 +46,9 @@ export default function AdminLayout({
     const resgisterComapyUser = await createProject(
       createProjectData.startDate,
       createProjectData.finishDate,
-      createProjectData.name,
       createProjectData.description,
-      createProjectData.scopes,
-      createProjectData.objective,
       createProjectData.budget,
+      createProjectData.objective,
       createProjectData.requirements,
       createProjectData.team_profile
     );

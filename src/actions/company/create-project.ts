@@ -5,9 +5,7 @@ import { auth } from "@/auth.config";
 export const createProject = async (
   startDate: string,
   finishDate: string,
-  name: string,
   description: string,
-  scopes: string,
   objective: string,
   budget: string,
   requirements: string,
@@ -31,7 +29,6 @@ export const createProject = async (
       startDate: startDate,
       finishDate: finishDate,
       description: description,
-      scopes: scopes,
       objective: objective,
       budget: budget,
       requirements: requirements,
