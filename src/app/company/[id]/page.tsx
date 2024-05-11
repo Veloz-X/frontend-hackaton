@@ -97,33 +97,13 @@ export default function ProjectIdPage({ params }: Props) {
                         {user.jobMatcherResponses.profile_summary}
                       </CardDescription>
                     </CardContent>
-                    <CardFooter>
-                      {/* {user?.jobMatcherResponses?.job_description_match <= 50 && (
-                        <Button className={`px-4 py-2  bg-red-400`}>
-                          <CircleUserIcon className="mr-2 h-4 w-4 my-auto text-lg font-bold" />
-                          {user.jobMatcherResponses.job_description_match}% de
-                          compatibilidad
-                        </Button>
-                      )}
-                      {user.jobMatcherResponses.job_description_match >= 49 &&
-                        user.jobMatcherResponses.job_description_match <=
-                          69 && (
-                          <Button className={`px-4 py-2  bg-yellow-400`}>
-                            <CircleUserIcon className="mr-2 h-4 w-4 my-auto text-lg font-bold" />
-                            {user.jobMatcherResponses.job_description_match}% de
-                            compatibilidad
-                          </Button>
-                        )}
-                      {user.jobMatcherResponses.job_description_match > 70 && (
-                        <Button className={`px-4 py-2  bg-green-400`}>
-                          <CircleUserIcon className="mr-2 h-4 w-4 my-auto text-lg font-bold" />
-                          {user.jobMatcherResponses.job_description_match}% de
-                          compatibilidad
-                        </Button>
-                      )} */}
+                    <CardFooter className="justify-end space-x-2">
                       <Button className="flex font-bold" variant={"secondary"}>
                         {user.jobMatcherResponses.job_description_match} de
                         compatibilidad
+                      </Button>
+                      <Button className="flex font-bold" variant={"secondary"}>
+                        <EyeIcon className=" h-4 w-4 my-auto text-lg font-bold" />
                       </Button>
                     </CardFooter>
                   </Card>
