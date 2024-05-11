@@ -22,7 +22,6 @@ import { getProjects } from "@/actions";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { Project } from "@/components/company/interface/project";
-import Loading from "./loading";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 
 export default function DashboardPage() {
@@ -40,7 +39,6 @@ export default function DashboardPage() {
 
   return (
     <>
-      <Suspense fallback={<Loading />}></Suspense>
       {projects.length > 0 && (
         <div className="grid grid-cols-3 p-4 gap-4">
           {projects.map((project) => (

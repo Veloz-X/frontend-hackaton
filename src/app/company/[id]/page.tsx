@@ -32,8 +32,8 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { Project } from "@/components/company/interface/project";
-import Loading from "../loading";
 import { toast } from "sonner";
+import Loading from "../loading";
 
 interface Props {
   params: { id: string };
@@ -65,12 +65,11 @@ export default function ProjectIdPage({ params }: Props) {
 
   return (
     <>
-      <Suspense fallback={<Loading />}></Suspense>
       {project ? (
-        <div className="p-3 h-screen flex">
+        <div className="p-3 flex">
           <ResizablePanelGroup
             direction="horizontal"
-            className="max-w-full rounded-lg border"
+            className="max-w-full rounded-lg border m-3 h-screen"
           >
             <ResizablePanel defaultSize={65}>
               <div className="grid grid-cols-2 p-3 gap-3">
@@ -133,11 +132,17 @@ export default function ProjectIdPage({ params }: Props) {
                       </Badge>
                     </div>
                     <p className="font-semibold text-sm">Objetivo:</p>
-                    <CardDescription className="overflow-y-auto">{project.objective}</CardDescription>
+                    <CardDescription className="overflow-y-auto">
+                      {project.objective}
+                    </CardDescription>
                     <p className="font-semibold text-sm">Requerimiento:</p>
-                    <CardDescription className="overflow-y-auto">{project.requirements}</CardDescription>
+                    <CardDescription className="overflow-y-auto">
+                      {project.requirements}
+                    </CardDescription>
                     <p className="font-semibold text-sm">Perfil Profesional:</p>
-                    <CardDescription className="overflow-y-auto">{project.team_profile}</CardDescription>
+                    <CardDescription className="overflow-y-auto">
+                      {project.team_profile}
+                    </CardDescription>
                   </CardHeader>
                   <CardFooter className="space-x-2">
                     <Button
