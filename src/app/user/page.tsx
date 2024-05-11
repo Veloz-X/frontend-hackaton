@@ -45,7 +45,7 @@ export default function UserPage() {
         </CardHeader>
         {userData ? (
           <CardContent className="space-y-2">
-            {/* <Label>Nombre</Label>
+            <Label>Nombre</Label>
             <Input value={userData.fullName} disabled />
             <Label>Correo</Label>
             <Input value={userData.email} disabled />
@@ -54,7 +54,7 @@ export default function UserPage() {
             <Label>Localidad</Label>
             <Input value={userData.location} disabled />
             <Label>Telefono</Label>
-            <Input value={userData.phone} disabled /> */}
+            <Input value={userData.phone} disabled />
           </CardContent>
         ) : (
           <div className="flex justify-center items-center mb-20">
