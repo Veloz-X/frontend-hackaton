@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { Button } from "@/components/ui/button";
 import { LogOut, UserSearchIcon } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,13 +25,16 @@ export default function UserLayout({
               <p className="my-auto">TalentLink</p>
             </div>
           </a>
-          <Button
-            onClick={() => signOut()}
-            className=" justify-start font-normal "
-          >
-            <LogOut className="mr-3 h-6 w-6 my-auto" />
-            <p className="font-semibold text-base my-auto">Cerrar Sesión</p>
-          </Button>
+          <div className="flex space-x-2">
+            <ModeToggle />
+            <Button
+              onClick={() => signOut()}
+              className=" justify-start font-normal "
+            >
+              <LogOut className="mr-3 h-6 w-6 my-auto" />
+              <p className="font-semibold text-base my-auto">Cerrar Sesión</p>
+            </Button>
+          </div>
         </div>
         {children}
       </body>
