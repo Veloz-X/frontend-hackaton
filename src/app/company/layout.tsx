@@ -50,10 +50,9 @@ export default function AdminLayout({
 
   const handleSubmitUser = async () => {
     if (
-      createProjectData.startDate.length > 5 &&
-      createProjectData.finishDate.length > 5 &&
+      createProjectData.startDate.length > 4 &&
+      createProjectData.finishDate.length > 4 &&
       createProjectData.description.length > 5 &&
-      createProjectData.budget.length > 5 &&
       createProjectData.objective.length > 5 &&
       createProjectData.requirements.length > 5 &&
       createProjectData.team_profile.length > 5
