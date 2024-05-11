@@ -121,7 +121,7 @@ export default function ProjectIdPage({ params }: Props) {
                           compatibilidad
                         </Button>
                       )} */}
-                      <Button className="flex font-bold" variant={"default"}>
+                      <Button className="flex font-bold" variant={"secondary"}>
                         {user.jobMatcherResponses.job_description_match} de
                         compatibilidad
                       </Button>
