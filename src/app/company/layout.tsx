@@ -49,7 +49,21 @@ export default function AdminLayout({
   });
 
   const handleSubmitUser = async () => {
-    const {status} = await createProject(
+    if (
+      createProjectData.startDate.length > 10 &&
+      createProjectData.finishDate.length > 10 &&
+      createProjectData.description.length > 10 &&
+      createProjectData.budget.length > 10 &&
+      createProjectData.objective.length > 10 &&
+      createProjectData.requirements.length > 10 &&
+      createProjectData.team_profile.length > 10
+    ) {
+      toast.success("Proyecto creado con exito");
+    } else {
+      toast.error("Error al crear el proyecto");
+      return;
+    }
+    const { status } = await createProject(
       createProjectData.startDate,
       createProjectData.finishDate,
       createProjectData.description,
@@ -58,11 +72,6 @@ export default function AdminLayout({
       createProjectData.requirements,
       createProjectData.team_profile
     );
-    if (status) {
-      toast.success("Proyecto creado con exito");
-    } else {
-      toast.error("Error al crear el proyecto");
-    }
   };
 
   const handleCreateProject = (field: any, value: any) => {
