@@ -56,11 +56,6 @@ export default function DashboardPage() {
                 <div className="py-1 pt-2 ">
                   <Badge>Presupuesto: {project.budget} </Badge>
                 </div>
-                <div className="py-1">
-                  <Badge variant={"outline"}>
-                    Proyecto: {project?.status === true ? "Activo" : "Inactivo"}{" "}
-                  </Badge>
-                </div>
                 <div className="pt-2">
                   <Link href={`/company/${project.id}`} key={project.id}>
                     <Button

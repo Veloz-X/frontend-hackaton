@@ -73,7 +73,7 @@ export default function ProjectIdPage({ params }: Props) {
             className="max-w-full rounded-lg border"
           >
             <ResizablePanel defaultSize={65}>
-              <div className="grid grid-cols-3 p-3 gap-3">
+              <div className="grid grid-cols-2 p-3 gap-3">
                 {project.usersAdmitted.map((user) => (
                   <Card key={user.id}>
                     <CardHeader>
@@ -82,14 +82,11 @@ export default function ProjectIdPage({ params }: Props) {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <CardDescription className="grid-cols-2 gap-2 grid">
+                      <CardDescription className="flex gap-2">
                         <Badge className="flex ">{user.email}</Badge>
                         <Badge className="flex ">
                           <PhoneCallIcon className="mr-2 h-4 w-4 my-auto" />
                           {user.phone}
-                        </Badge>
-                        <Badge className="flex ">
-                          Experiencia: {user.yearsexperience} Años
                         </Badge>
                         <Badge className="flex ">
                           <MapPinIcon className="mr-2 h-4 w-4 my-auto" />
