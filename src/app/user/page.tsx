@@ -43,18 +43,25 @@ export default function UserPage() {
           <CardTitle>Usuario</CardTitle>
         </CardHeader>
         {userData ? (
-          <CardContent className="space-y-2">
-            <Label>Nombre</Label>
-            <Input value={userData.fullName} disabled />
-            <Label>Correo</Label>
-            <Input value={userData.email} disabled />
-            <Label>Telefono</Label>
-            <Input value={userData.phone} disabled />
-            <Label>Localidad</Label>
-            <Input value={userData.location} disabled />
-            <Label>Telefono</Label>
-            <Input value={userData.phone} disabled />
-          </CardContent>
+          <div className="grid grid-cols-2 gap-2">
+            <CardContent className="space-y-2">
+              <Label>Nombre</Label>
+              <Input value={userData.fullName} disabled />
+              <Label>Correo</Label>
+              <Input value={userData.email} disabled />
+              <Label>Telefono</Label>
+              <Input value={userData.phone} disabled />
+              <Label>Localidad</Label>
+              <Input value={userData.location} disabled />
+              <Label>Telefono</Label>
+              <Input value={userData.phone} disabled />
+            </CardContent>
+            <CardContent className="space-y-2">
+              <Label>Ingresa URL para aplicar al proyecto:</Label>
+              <Input type="text"/>
+             
+            </CardContent>
+          </div>
         ) : (
           <div className="flex justify-center items-center mb-20">
             <Loading />
