@@ -66,7 +66,7 @@ export default function ProjectIdPage({ params }: Props) {
   return (
     <>
       <Suspense fallback={<Loading />}></Suspense>
-      {project && (
+      {project ? (
         <div className="p-3 h-screen flex">
           <ResizablePanelGroup
             direction="horizontal"
@@ -102,7 +102,7 @@ export default function ProjectIdPage({ params }: Props) {
                         {user.jobMatcherResponses.job_description_match} de
                         compatibilidad
                       </Button>
-                      <Button >
+                      <Button>
                         <EyeIcon className=" h-4 w-4" />
                       </Button>
                     </CardFooter>
@@ -158,6 +158,10 @@ export default function ProjectIdPage({ params }: Props) {
               </div>
             </ResizablePanel>
           </ResizablePanelGroup>
+        </div>
+      ) : (
+        <div className="flex justify-center items-center h-screen">
+          <Loading />
         </div>
       )}
     </>
