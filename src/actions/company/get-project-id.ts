@@ -17,7 +17,6 @@ export const getProjectId = async (id: string) => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${session.user.token}`,
         },
-        next: { revalidate: false },
       }
     );
 
