@@ -6,8 +6,8 @@ export const createProject = async (
   startDate: string,
   finishDate: string,
   description: string,
-  objective: string,
   budget: string,
+  objective: string,
   requirements: string,
   team_profile: string
 ) => {

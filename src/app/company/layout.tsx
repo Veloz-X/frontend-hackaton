@@ -4,7 +4,12 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { Button } from "@/components/ui/button";
-import { LogOut, PlusCircleIcon, UserSearchIcon } from "lucide-react";
+import {
+  FilePlusIcon,
+  LogOut,
+  PlusCircleIcon,
+  UserSearchIcon,
+} from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import {
   Dialog,
@@ -99,7 +104,7 @@ export default function AdminLayout({
                       type="text"
                       placeholder="$20000.00"
                       onChange={(e) => {
-                        handleCreateProject("scopes", e.target.value);
+                        handleCreateProject("budget", e.target.value);
                       }}
                     />
                   </div>
@@ -167,7 +172,10 @@ export default function AdminLayout({
                 </div>
 
                 <DialogFooter>
-                  <Button onClick={handleSubmitUser}>Crear</Button>
+                  <Button onClick={handleSubmitUser}>
+                    <FilePlusIcon className="mr-2 h-6 w-6 my-auto" />
+                    Crear
+                  </Button>
                 </DialogFooter>
               </DialogContent>
             </Dialog>
