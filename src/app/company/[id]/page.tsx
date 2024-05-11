@@ -121,11 +121,10 @@ export default function ProjectIdPage({ params }: Props) {
                           compatibilidad
                         </Button>
                       )} */}
-                      <Badge className="flex" variant={"default"}>
-                        <CircleUserIcon className="mr-2 h-4 w-4 my-auto text-lg font-semibold" />
+                      <Button className="flex font-bold" variant={"default"}>
                         {user.jobMatcherResponses.job_description_match} de
                         compatibilidad
-                      </Badge>
+                      </Button>
                     </CardFooter>
                   </Card>
                 ))}

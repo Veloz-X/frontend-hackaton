@@ -109,7 +109,7 @@ export default function AdminLayout({
                     />
                   </div>
                   <div className="space-y-1">
-                    <Label htmlFor="description">Descripcion:</Label>
+                    <Label htmlFor="description">Nombre del Proyecto:</Label>
                     <Input
                       id="description"
                       type="text"
