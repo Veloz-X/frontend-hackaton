@@ -72,7 +72,7 @@ export default function ProjectIdPage({ params }: Props) {
             direction="horizontal"
             className="max-w-full rounded-lg border"
           >
-            <ResizablePanel defaultSize={70}>
+            <ResizablePanel defaultSize={65}>
               <div className="grid grid-cols-3 p-3 gap-3">
                 {project.usersAdmitted.map((user) => (
                   <Card key={user.id}>
@@ -135,7 +135,7 @@ export default function ProjectIdPage({ params }: Props) {
               </div>
             </ResizablePanel>
             <ResizableHandle withHandle />
-            <ResizablePanel defaultSize={30}>
+            <ResizablePanel defaultSize={35}>
               <div className="p-2">
                 <Card>
                   <CardHeader>

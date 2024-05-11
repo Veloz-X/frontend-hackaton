@@ -23,6 +23,7 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { Project } from "@/components/company/interface/project";
 import Loading from "./loading";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
 
 export default function DashboardPage() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -45,11 +46,15 @@ export default function DashboardPage() {
           {projects.map((project) => (
             <Card key={project.id}>
               <CardHeader>
-                <CardTitle className="text-base">{project.description}</CardTitle>
+                <CardTitle className="text-base uppercase">
+                  <ScrollArea>{project.description}</ScrollArea>
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="font-semibold">Objetivo:</div>
-                <CardDescription>{project.objective}</CardDescription>
+                <CardDescription>
+                  <ScrollArea>{project.objective}</ScrollArea>
+                </CardDescription>
                 <div className="py-1 pt-2 ">
                   <Badge>Presupuesto: {project.budget} </Badge>
                 </div>
