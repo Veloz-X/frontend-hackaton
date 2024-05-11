@@ -30,10 +30,6 @@ export const getProjectId = async (id: string) => {
     );
     clearTimeout(timeout);
 
-    if (!res.ok) {
-      throw new Error(`Error al obtener el proyecto: ${res.statusText}`);
-    }
-
     const project = await res.json();
     console.log(project);
 
