@@ -33,6 +33,7 @@ import {
 } from "@/components/ui/resizable";
 import { Project } from "@/components/company/interface/project";
 import { toast } from "sonner";
+import Loading from "@/app/company/loading";
 
 interface Props {
   params: { id: string };
@@ -67,7 +68,7 @@ export default function AdmissionsIdPage({ params }: Props) {
   return (
     <>
       <div className="p-10">
-        {project && (
+        {project ?(
           <Card>
             <CardHeader>
               <CardTitle>{project.description}</CardTitle>
@@ -104,6 +105,10 @@ export default function AdmissionsIdPage({ params }: Props) {
               </Button>
             </CardFooter>
           </Card>
+        ):(
+          <div className="flex justify-center items-center mb-20">
+            <Loading />
+          </div>
         )}
       </div>
     </>
