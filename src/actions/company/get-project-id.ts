@@ -19,6 +19,7 @@ export const getProjectId = async (id:string) => {
     },
   });
   const project = await res.json();
+  console.log(res);
 
   return {
     status: true,
