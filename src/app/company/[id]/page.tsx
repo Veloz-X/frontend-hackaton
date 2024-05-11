@@ -102,8 +102,8 @@ export default function ProjectIdPage({ params }: Props) {
                         {user.jobMatcherResponses.job_description_match} de
                         compatibilidad
                       </Button>
-                      <Button className="flex font-bold" variant={"destructive"}>
-                        <EyeIcon className=" h-4 w-4 my-auto text-lg font-bold" />
+                      <Button >
+                        <EyeIcon className=" h-4 w-4" />
                       </Button>
                     </CardFooter>
                   </Card>
