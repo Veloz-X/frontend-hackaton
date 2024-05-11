@@ -21,14 +21,13 @@ import {
 import { getDataUser, getProjects } from "@/actions";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import { Project } from "@/components/company/interface/project";
+import { Project, User } from "@/components/company/interface/project";
 import Loading from "./loading";
-import { User } from "next-auth";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 
 export default function UserPage() {
-  const [userData, setUserData] = useState<User>();
+  const [userData, setUserData] = useState<any>();
   const getUserData = async () => {
     const { ok, user } = await getDataUser();
     setUserData(user);
