@@ -1,33 +1,24 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  CalendarDaysIcon,
-  ChevronLeft,
-  ChevronRight,
-  EyeIcon,
-  LogOut,
-} from "lucide-react";
-import { useState, useEffect, Suspense } from "react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getDataUser, getProjects } from "@/actions";
-import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
-import { Project, User } from "@/components/company/interface/project";
+import { getDataUser } from "@/actions";
 import Loading from "./loading";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
+import { LinkIcon } from "lucide-react";
 
 export default function UserPage() {
   const [userData, setUserData] = useState<any>();
+  const [url, setUrl] = useState<any>("");
   const getUserData = async () => {
     const { ok, user } = await getDataUser();
     setUserData(user);
@@ -58,8 +49,15 @@ export default function UserPage() {
             </CardContent>
             <CardContent className="space-y-2">
               <Label>Ingresa URL para aplicar al proyecto:</Label>
-              <Input type="text"/>
-             
+              <Input type="text" onChange={(e) => setUrl(e.target.value)} />
+              <div className="py-2">
+                <Link href={url}>
+                  <Button className="font-semibold" disabled={!url}>
+                    <LinkIcon size={24} className="mr-2" />
+                    Aplicar
+                  </Button>
+                </Link>
+              </div>
             </CardContent>
           </div>
         ) : (
