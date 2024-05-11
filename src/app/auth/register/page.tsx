@@ -59,18 +59,18 @@ export default function AuthRegister() {
   };
 
   const handleSubmitUser = async () => {
-    const resgisterComapyResponse = await registerCompanyApi(
-      registerCompany.email,
-      registerCompany.fullName,
-      registerCompany.roles,
-      registerCompany.password,
-      "0999999999",
-      "",
-      "",
-      ""
+    const resgisterComapyUser = await registerCompanyApi(
+      registerUser.email,
+      registerUser.fullName,
+      registerUser.roles,
+      registerUser.password,
+      registerUser.phone,
+      registerUser.hoursavailable,
+      registerUser.location,
+      registerUser.bio,
     );
     toast("Registrar", {
-      description: resgisterComapyResponse.message,
+      description: resgisterComapyUser.message,
       duration: 5000,
     });
   };
@@ -189,6 +189,17 @@ export default function AuthRegister() {
                       }}
                     />
                   </div>
+                  <div className="space-y-1">
+                    <Label htmlFor="passwordUser">Contraseña</Label>
+                    <Input
+                      id="passwordUser"
+                      type="password"
+                      placeholder=""
+                      onChange={(e) => {
+                        handleRegisterUser("password", e.target.value);
+                      }}
+                    />
+                  </div>
                   <div className="py-1 flex space-x-2">
                     <div>
                       <Label htmlFor="phoneUser">Telefono</Label>
@@ -261,7 +272,7 @@ export default function AuthRegister() {
             </Button>
           </div>
         </CardFooter>
-        {JSON.stringify(registerUser)}
+        {/* {JSON.stringify(registerUser)} */}
       </Card>
     </div>
   );

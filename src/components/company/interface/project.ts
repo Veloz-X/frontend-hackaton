@@ -24,13 +24,14 @@ export interface User {
     id:                  string;
     email:               string;
     fullName:            string;
-    jobMatcherResponses: JobMatcherResponses;
+    jobMatcherResponses: null;
     phone:               string;
-    data:                UserCreateData;
+    bio:                 null;
     isActive:            boolean;
     roles:               string[];
     createDate:          Date;
     updateDate:          Date;
+    yearsexperience:     string;
 }
 
 export interface UserCreateData {

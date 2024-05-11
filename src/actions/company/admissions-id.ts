@@ -14,7 +14,7 @@ export const admissionsId = async (id: string) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/projects/postulate/${id}`,
     {
-      method: "GET",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${session?.user?.token}`,
@@ -22,6 +22,7 @@ export const admissionsId = async (id: string) => {
     }
   );
   const mesage = await res.json();
+  console.log(mesage);
 
   return {
     status: true,

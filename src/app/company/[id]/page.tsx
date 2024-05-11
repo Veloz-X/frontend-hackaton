@@ -73,7 +73,7 @@ export default function ProjectIdPage({ params }: Props) {
             className="max-w-full rounded-lg border"
           >
             <ResizablePanel defaultSize={70}>
-              <div className="grid grid-cols-3 p-3">
+              <div className="grid grid-cols-3 p-3 gap-3">
                 {project.usersAdmitted.map((user) => (
                   <Card key={user.id}>
                     <CardHeader>
@@ -87,11 +87,11 @@ export default function ProjectIdPage({ params }: Props) {
                           {user.phone}
                         </Badge>
                         <Badge className="flex ">
-                          Experiencia: {user.data.yearsofexp}
+                          Experiencia: {user.yearsexperience} Años
                         </Badge>
                         <Badge className="flex ">
                           <MapPinIcon className="mr-2 h-4 w-4 my-auto" />
-                          {user.data.location}
+                          {user.location}
                         </Badge>
                       </CardDescription>
                       <CardDescription className="pt-3 text-justify">
@@ -99,6 +99,30 @@ export default function ProjectIdPage({ params }: Props) {
                       </CardDescription>
                     </CardContent>
                     <CardFooter>
+{/*                       
+                      {user?.jobMatcherResponses?.job_description_match <= 50 && (
+                        <Button className={`px-4 py-2  bg-red-400`}>
+                          <CircleUserIcon className="mr-2 h-4 w-4 my-auto text-lg font-bold" />
+                          {user.jobMatcherResponses.job_description_match}% de
+                          compatibilidad
+                        </Button>
+                      )}
+                      {user.jobMatcherResponses.job_description_match >= 49 &&
+                        user.jobMatcherResponses.job_description_match <=
+                          69 && (
+                          <Button className={`px-4 py-2  bg-yellow-400`}>
+                            <CircleUserIcon className="mr-2 h-4 w-4 my-auto text-lg font-bold" />
+                            {user.jobMatcherResponses.job_description_match}% de
+                            compatibilidad
+                          </Button>
+                        )}
+                      {user.jobMatcherResponses.job_description_match > 70 && (
+                        <Button className={`px-4 py-2  bg-green-400`}>
+                          <CircleUserIcon className="mr-2 h-4 w-4 my-auto text-lg font-bold" />
+                          {user.jobMatcherResponses.job_description_match}% de
+                          compatibilidad
+                        </Button>
+                      )} */}
                       <Badge className="flex" variant={"default"}>
                         <CircleUserIcon className="mr-2 h-4 w-4 my-auto text-lg font-semibold" />
                         {user.jobMatcherResponses.job_description_match} de
@@ -129,8 +153,6 @@ export default function ProjectIdPage({ params }: Props) {
                         {project.budget}
                       </Badge>
                     </div>
-                    <p className="font-semibold text-sm">Descripcion:</p>
-                    <CardDescription>{project.description}</CardDescription>
                     <p className="font-semibold text-sm">Objetivo:</p>
                     <CardDescription>{project.objective}</CardDescription>
                     <p className="font-semibold text-sm">Requerimiento:</p>

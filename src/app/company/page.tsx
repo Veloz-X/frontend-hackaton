@@ -74,6 +74,14 @@ export default function DashboardPage() {
           ))}
         </div>
       )}
+      {projects.length === 0 && (
+        <div className="flex justify-center items-center h-screen">
+          <div className="text-center">
+            <div className="text-2xl font-semibold">No hay proyectos</div>
+            <div className="text-lg">Cree un proyecto para comenzar</div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
