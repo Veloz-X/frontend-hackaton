@@ -99,7 +99,7 @@ export default function ProjectIdPage({ params }: Props) {
                       </CardDescription>
                     </CardContent>
                     <CardFooter>
-                      {user?.jobMatcherResponses?.job_description_match <= 50 && (
+                      {/* {user?.jobMatcherResponses?.job_description_match <= 50 && (
                         <Button className={`px-4 py-2  bg-red-400`}>
                           <CircleUserIcon className="mr-2 h-4 w-4 my-auto text-lg font-bold" />
                           {user.jobMatcherResponses.job_description_match}% de
@@ -121,7 +121,7 @@ export default function ProjectIdPage({ params }: Props) {
                           {user.jobMatcherResponses.job_description_match}% de
                           compatibilidad
                         </Button>
-                      )}
+                      )} */}
                       <Badge className="flex" variant={"default"}>
                         <CircleUserIcon className="mr-2 h-4 w-4 my-auto text-lg font-semibold" />
                         {user.jobMatcherResponses.job_description_match} de
