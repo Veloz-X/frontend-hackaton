@@ -75,7 +75,7 @@ export default function ProjectIdPage({ params }: Props) {
             <ResizablePanel defaultSize={65}>
               <div className="grid grid-cols-2 p-3 gap-3">
                 {project.usersAdmitted.map((user) => (
-                  <Card key={user.id}>
+                  <Card key={user.id} className="mb-auto">
                     <CardHeader>
                       <CardTitle className="text-base">
                         {user.fullName}
