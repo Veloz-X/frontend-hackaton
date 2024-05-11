@@ -66,10 +66,10 @@ export default function ProjectIdPage({ params }: Props) {
   return (
     <>
       {project ? (
-        <div className="p-3 flex">
+        <div className="p-2 flex">
           <ResizablePanelGroup
             direction="horizontal"
-            className="max-w-full rounded-lg border m-3 h-screen"
+            className="max-w-full rounded-lg border h-screen"
           >
             <ResizablePanel defaultSize={65}>
               <div className="grid grid-cols-2 p-3 gap-3">
