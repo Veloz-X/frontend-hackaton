@@ -24,7 +24,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getProjectId, getProjects } from "@/actions";
+import { getProjectId } from "@/actions";
 import { Badge } from "@/components/ui/badge";
 import {
   ResizableHandle,
@@ -57,7 +57,12 @@ export default function ProjectIdPage({ params }: Props) {
     try {
       const { status, project } = await getProjectId(params.id);
       setProject(project);
-    } catch (error) {}
+      if (!status) {
+        toast.error("Error al obtener el proyecto");
+      }
+    } catch (error) {
+      toast.error("Error al obtener el proyecto");
+    }
   };
   useEffect(() => {
     getProjectData();
