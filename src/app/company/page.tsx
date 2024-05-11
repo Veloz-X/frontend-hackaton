@@ -56,11 +56,11 @@ export default function DashboardPage() {
                 <div className="py-1 pt-2 ">
                   <Badge>Presupuesto: {project.budget} </Badge>
                 </div>
-                <div className="pt-2">
+                <div className="pt-2 justify-end flex">
                   <Link href={`/company/${project.id}`} key={project.id}>
                     <Button
                       className="font-semibold justify-end"
-                      variant={"secondary"}
+                      variant={"secondary"} 
                     >
                       <EyeIcon className="mr-2 h-6 w-6 my-auto" />
                       Ver Proyecto
