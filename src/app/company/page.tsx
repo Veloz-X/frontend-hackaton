@@ -47,7 +47,7 @@ export default function DashboardPage() {
             <Card key={project.id}>
               <CardContent>
               <CardTitle className="text-base uppercase pt-4 pb-2">
-                  <ScrollArea>{project.description}</ScrollArea>
+                  <ScrollArea className="line-clamp-5 ">{project.description}</ScrollArea>
                 </CardTitle>
                 <div className="font-semibold ">Objetivo:</div>
                 <CardDescription>
