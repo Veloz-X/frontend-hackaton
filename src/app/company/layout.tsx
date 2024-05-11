@@ -58,7 +58,7 @@ export default function AdminLayout({
       createProjectData.requirements.length > 5 &&
       createProjectData.team_profile.length > 5
     ) {
-      toast.success("Proyecto creado con exito");
+      toast("Cargando...");
     } else {
       toast.error("Error al crear el proyecto");
       return;
@@ -72,6 +72,9 @@ export default function AdminLayout({
       createProjectData.requirements,
       createProjectData.team_profile
     );
+    if (status) {
+      toast.success("Proyecto creado correctamente");
+    }
   };
 
   const handleCreateProject = (field: any, value: any) => {
