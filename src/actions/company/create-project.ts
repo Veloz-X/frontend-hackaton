@@ -37,10 +37,8 @@ export const createProject = async (
   });
   const response = await res.json();
 
-  console.log(response);
-
   return {
-    status: true,
+    status: response.status,
     response: response.message,
   };
 };

@@ -13,6 +13,7 @@ import {
 import { signIn, signOut, useSession } from "next-auth/react";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -48,7 +49,7 @@ export default function AdminLayout({
   });
 
   const handleSubmitUser = async () => {
-    const message = await createProject(
+    const {status} = await createProject(
       createProjectData.startDate,
       createProjectData.finishDate,
       createProjectData.description,
@@ -57,10 +58,11 @@ export default function AdminLayout({
       createProjectData.requirements,
       createProjectData.team_profile
     );
-    toast("Crear Project", {
-      description: message.message,
-      duration: 5000,
-    });
+    if (status) {
+      toast.success("Proyecto creado con exito");
+    } else {
+      toast.error("Error al crear el proyecto");
+    }
   };
 
   const handleCreateProject = (field: any, value: any) => {
@@ -170,10 +172,12 @@ export default function AdminLayout({
                   </div>
                 </div>
                 <DialogFooter>
-                  <Button onClick={handleSubmitUser}>
-                    <FilePlusIcon className="mr-2 h-6 w-6 my-auto" />
-                    Crear
-                  </Button>
+                  <DialogClose>
+                    <Button onClick={handleSubmitUser}>
+                      <FilePlusIcon className="mr-2 h-6 w-6 my-auto" />
+                      Crear Proyecto
+                    </Button>
+                  </DialogClose>
                 </DialogFooter>
               </DialogContent>
             </Dialog>
