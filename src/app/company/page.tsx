@@ -45,7 +45,7 @@ export default function DashboardPage() {
           {projects.map((project) => (
             <Card key={project.id}>
               <CardHeader>
-                <CardTitle>{project.description}</CardTitle>
+                <CardTitle className="text-base">{project.description}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="font-semibold">Objetivo:</div>

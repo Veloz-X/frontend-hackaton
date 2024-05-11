@@ -77,7 +77,9 @@ export default function ProjectIdPage({ params }: Props) {
                 {project.usersAdmitted.map((user) => (
                   <Card key={user.id}>
                     <CardHeader>
-                      <CardTitle>{user.fullName}</CardTitle>
+                      <CardTitle className="text-base">
+                        {user.fullName}
+                      </CardTitle>
                     </CardHeader>
                     <CardContent>
                       <CardDescription className="grid-cols-2 gap-2 grid">
@@ -137,7 +139,9 @@ export default function ProjectIdPage({ params }: Props) {
               <div className="p-2">
                 <Card>
                   <CardHeader>
-                    <CardTitle>{project.description}</CardTitle>
+                    <CardTitle className="text-base">
+                      {project.description}
+                    </CardTitle>
                     <div className="flex space-x-1 py-2">
                       <Badge className="flex">
                         <CalendarDaysIcon className="mr-2 h-4 w-4 my-auto" />
