@@ -9,6 +9,13 @@ export const getProjectId = async (id: string) => {
       throw new Error("Debe estar autenticado");
     }
 
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    const timeout = setTimeout(() => {
+      controller.abort();
+    }, 50000);
+
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/projects/${id}`,
       {
@@ -17,14 +24,18 @@ export const getProjectId = async (id: string) => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${session.user.token}`,
         },
+        signal: signal,
+        next: { revalidate: false },
       }
     );
+    clearTimeout(timeout);
 
     if (!res.ok) {
       throw new Error(`Error al obtener el proyecto: ${res.statusText}`);
     }
 
     const project = await res.json();
+    console.log(project);
 
     return {
       status: project.status,
