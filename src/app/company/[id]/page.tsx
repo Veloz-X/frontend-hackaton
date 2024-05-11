@@ -57,9 +57,7 @@ export default function ProjectIdPage({ params }: Props) {
     try {
       const { status, project } = await getProjectId(params.id);
       setProject(project);
-      if (status===false) {
-        toast.error("Error al obtener el proyecto");
-      }
+    
     } catch (error) {
       toast.error("Error al obtener el proyecto");
     }
