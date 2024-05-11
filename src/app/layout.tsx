@@ -8,8 +8,8 @@ import SessionAuthProvider from "@/context/SessionAuthProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "RedHack App",
-  description: "RedHack App",
+  title: "TalentLink App",
+  description: "TalentLink App",
 };
 
 export default function RootLayout({

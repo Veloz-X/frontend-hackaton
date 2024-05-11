@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { Button } from "@/components/ui/button";
-import { LogOut, PlusCircleIcon } from "lucide-react";
+import { LogOut, PlusCircleIcon, UserSearchIcon } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import {
   Dialog,
@@ -18,6 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,10 +31,12 @@ export default function AdminLayout({
     <html lang="es">
       <body className={inter.className}>
         <div className=" mx-auto flex justify-between  pt-4 px-4">
-          <div className="font-semibold my-auto px-3 text-xl">
-            RedHack - Administrador
+          <div className="font-semibold my-auto px-3 text-xl flex">
+          <UserSearchIcon className="w-8 h-8 mr-2 my-auto" />
+            <p className="my-auto">TalentLink - Administrador</p>
           </div>
           <div className="flex space-x-2">
+            <ModeToggle />
             <Dialog>
               <DialogTrigger asChild>
                 <Button className="justify-start font-normal">
