@@ -59,7 +59,12 @@ export default function AdmissionsIdPage({ params }: Props) {
     try {
       const { status, project } = await getProjectId(params.id);
       setProject(project);
-    } catch (error) {}
+      if (!status) {
+        toast.error("Error al obtener el proyecto");
+      }
+    } catch (error) {
+      toast.error("Error al obtener el proyecto");
+    }
   };
   useEffect(() => {
     getProjectData();
