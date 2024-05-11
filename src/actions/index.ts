@@ -4,3 +4,4 @@ export * from './company/get-project-id';
 export * from './company/admissions-id';
 export * from './auth/data-user';
 export * from './auth/register-company';
+export * from './company/create-project';

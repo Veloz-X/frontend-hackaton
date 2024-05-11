@@ -18,10 +18,12 @@ export default function UserLayout({
     <html lang="es">
       <body className={inter.className}>
         <div className=" mx-auto flex justify-between  pt-4 px-4">
-        <div className="font-semibold my-auto px-3 text-xl flex">
-          <UserSearchIcon className="w-8 h-8 mr-2 my-auto" />
-            <p className="my-auto">TalentLink - Administrador</p>
-          </div>
+          <a href="/user">
+            <div className="font-semibold my-auto px-3 text-xl flex">
+              <UserSearchIcon className="w-8 h-8 mr-2 my-auto" />
+              <p className="my-auto">TalentLink - Administrador</p>
+            </div>
+          </a>
           <Button
             onClick={() => signOut()}
             className=" justify-start font-normal "

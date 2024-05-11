@@ -19,6 +19,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { ModeToggle } from "@/components/mode-toggle";
+import { useState, useEffect, Suspense } from "react";
+import { createProject } from "@/actions";
+import { toast } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,14 +30,53 @@ export default function AdminLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [createProjectData, setCreateProjectData] = useState({
+    startDate: "",
+    finishDate: "",
+    name: "",
+    description: "",
+    scopes: "",
+    objective: "",
+    budget: "",
+    requirements: "",
+    team_profile: "",
+  });
+
+  const handleSubmitUser = async () => {
+    const resgisterComapyUser = await createProject(
+      createProjectData.startDate,
+      createProjectData.finishDate,
+      createProjectData.name,
+      createProjectData.description,
+      createProjectData.scopes,
+      createProjectData.objective,
+      createProjectData.budget,
+      createProjectData.requirements,
+      createProjectData.team_profile
+    );
+    // toast("Registrar", {
+    //   description: resgisterComapyUser.message,
+    //   duration: 5000,
+    // });
+  };
+
+  const handleCreateProject = (field: any, value: any) => {
+    setCreateProjectData((prevData) => ({
+      ...prevData,
+      [field]: value,
+    }));
+  };
+
   return (
     <html lang="es">
       <body className={inter.className}>
         <div className=" mx-auto flex justify-between  pt-4 px-4">
+          <a href="/company">
           <div className="font-semibold my-auto px-3 text-xl flex">
-          <UserSearchIcon className="w-8 h-8 mr-2 my-auto" />
+            <UserSearchIcon className="w-8 h-8 mr-2 my-auto" />
             <p className="my-auto">TalentLink - Administrador</p>
           </div>
+          </a>
           <div className="flex space-x-2">
             <ModeToggle />
             <Dialog>
@@ -47,22 +89,44 @@ export default function AdminLayout({
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[500px]">
+                {/* <pre>{JSON.stringify(createProjectData)}</pre> */}
                 <DialogHeader>
                   <DialogTitle>Cear Proyecto</DialogTitle>
                 </DialogHeader>
                 <div>
                   <div className="space-y-1">
+                    <Label htmlFor="description">Presupuesto:</Label>
+                    <Input
+                      id="description"
+                      type="text"
+                      placeholder="$20000.00"
+                      onChange={(e) => {
+                        handleCreateProject("scopes", e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div className="space-y-1">
                     <Label htmlFor="description">Descripcion:</Label>
-                    <Input id="description" type="text" />
+                    <Input
+                      id="description"
+                      type="text"
+                      onChange={(e) => {
+                        handleCreateProject("description", e.target.value);
+                      }}
+                    />
                   </div>
                   <div className="flex space-x-2">
                     <div className="space-y-1">
                       <Label htmlFor="data">Fecha Inicio:</Label>
-                      <Input id="data" type="text" placeholder="10/05/2024" />
+                      <Input id="data" type="text" placeholder="10/05/2024" onChange={(e) => {
+                        handleCreateProject("startDate", e.target.value);
+                      }}/>
                     </div>
                     <div className="space-y-1">
                       <Label htmlFor="data">Fecha Finalizacion:</Label>
-                      <Input id="data" type="text" placeholder="10/12/2024" />
+                      <Input id="data" type="text" placeholder="10/12/2024" onChange={(e) => {
+                        handleCreateProject("finishDate", e.target.value);
+                      }}/>
                     </div>
                   </div>
                   <div className="space-y-1">
@@ -70,6 +134,9 @@ export default function AdminLayout({
                     <Textarea
                       id="objetivo"
                       placeholder="Tengo 5 años de experiencia en desarrollo web..."
+                      onChange={(e) => {
+                        handleCreateProject("objective", e.target.value);
+                      }}
                     />
                   </div>
                   <div className="space-y-1">
@@ -77,6 +144,9 @@ export default function AdminLayout({
                     <Textarea
                       id="requerimiento"
                       placeholder="Tengo 5 años de experiencia en desarrollo web..."
+                      onChange={(e) => {
+                        handleCreateProject("requirements", e.target.value);
+                      }}
                     />
                   </div>
                   <div className="space-y-1">
@@ -84,12 +154,16 @@ export default function AdminLayout({
                     <Textarea
                       id="profilep"
                       placeholder="Tengo 5 años de experiencia en desarrollo web..."
+                      onChange={(e) => {
+                        handleCreateProject("team_profile", e.target.value);
+                      }}
+                      
                     />
                   </div>
                 </div>
 
                 <DialogFooter>
-                  <Button type="submit">Save changes</Button>
+                  <Button onClick={handleSubmitUser}>Crear</Button>
                 </DialogFooter>
               </DialogContent>
             </Dialog>
