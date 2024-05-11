@@ -109,7 +109,7 @@ export default function ProjectIdPage({ params }: Props) {
                 ))}
               </div>
             </ResizablePanel>
-            <ResizableHandle withHandle />
+            {/* <ResizableHandle withHandle /> */}
             <ResizablePanel defaultSize={35}>
               <div className="p-2 overflow-y-auto">
                 <Card>
