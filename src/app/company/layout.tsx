@@ -141,7 +141,6 @@ export default function AdminLayout({
                     <Label htmlFor="objetivo">Objetivo:</Label>
                     <Textarea
                       id="objetivo"
-                      placeholder="Tengo 5 años de experiencia en desarrollo web..."
                       onChange={(e) => {
                         handleCreateProject("objective", e.target.value);
                       }}
@@ -151,7 +150,6 @@ export default function AdminLayout({
                     <Label htmlFor="requerimiento">Requerimientos:</Label>
                     <Textarea
                       id="requerimiento"
-                      placeholder="Tengo 5 años de experiencia en desarrollo web..."
                       onChange={(e) => {
                         handleCreateProject("requirements", e.target.value);
                       }}
@@ -161,7 +159,6 @@ export default function AdminLayout({
                     <Label htmlFor="profilep">Perfil Profesional:</Label>
                     <Textarea
                       id="profilep"
-                      placeholder="Tengo 5 años de experiencia en desarrollo web..."
                       onChange={(e) => {
                         handleCreateProject("team_profile", e.target.value);
                       }}
