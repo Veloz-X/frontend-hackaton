@@ -45,15 +45,13 @@ export default function DashboardPage() {
         <div className="grid grid-cols-3 p-4 gap-4">
           {projects.map((project) => (
             <Card key={project.id}>
-              <CardHeader>
-                <CardTitle className="text-base uppercase">
+              <CardContent>
+              <CardTitle className="text-base uppercase pt-4 pb-2">
                   <ScrollArea>{project.description}</ScrollArea>
                 </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="font-semibold">Objetivo:</div>
+                <div className="font-semibold ">Objetivo:</div>
                 <CardDescription>
-                  <ScrollArea>{project.objective}</ScrollArea>
+                  <ScrollArea className="line-clamp-5 text-justify">{project.objective}</ScrollArea>
                 </CardDescription>
                 <div className="py-1 pt-2 ">
                   <Badge>Presupuesto: {project.budget} </Badge>
