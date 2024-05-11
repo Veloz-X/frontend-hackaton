@@ -24,7 +24,7 @@ export interface User {
     id:                  string;
     email:               string;
     fullName:            string;
-    jobMatcherResponses: null;
+    jobMatcherResponses: JobMatcherResponses;
     phone:               string;
     bio:                 null;
     isActive:            boolean;
@@ -32,6 +32,7 @@ export interface User {
     createDate:          Date;
     updateDate:          Date;
     yearsexperience:     string;
+    location:            string;
 }
 
 export interface UserCreateData {
