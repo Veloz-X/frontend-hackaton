@@ -24,6 +24,8 @@ import Link from "next/link";
 import { Project } from "@/components/company/interface/project";
 import Loading from "./loading";
 import { User } from "next-auth";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 
 export default function UserPage() {
   const [userData, setUserData] = useState<User>();
@@ -37,14 +39,28 @@ export default function UserPage() {
 
   return (
     <>
-      <Suspense fallback={<Loading />}></Suspense>
       <Card className="m-3">
         <CardHeader>
           <CardTitle>Usuario</CardTitle>
         </CardHeader>
-        <CardContent>
-        {JSON.stringify(userData)}
-        </CardContent>
+        {userData ? (
+          <CardContent className="space-y-2">
+            <Label>Nombre</Label>
+            <Input value={userData.fullName} disabled />
+            <Label>Correo</Label>
+            <Input value={userData.email} disabled />
+            <Label>Telefono</Label>
+            <Input value={userData.phone} disabled />
+            <Label>Localidad</Label>
+            <Input value={userData.location} disabled />
+            <Label>Telefono</Label>
+            <Input value={userData.phone} disabled />
+          </CardContent>
+        ) : (
+          <div className="flex justify-center items-center mb-20">
+            <Loading />
+          </div>
+        )}
       </Card>
     </>
   );
